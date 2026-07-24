@@ -1,1041 +1,312 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Alex Varon | Creative Industries & Academic Profile</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sam Moran — Creativity, Entertainment &amp; AI</title>
+  <meta name="description" content="Academic researcher and creative practitioner exploring how AI can expand human creativity across entertainment.">
+  <meta name="keywords" content="Sam Moran, creativity research, artificial intelligence, entertainment industry, human AI collaboration, speaker, consultant">
+  <meta name="theme-color" content="#f2efe7">
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'accent': '#D4AF37', // Metallic Gold
-                        'accent-dark': '#B5952F',
-                        'dark-bg': '#121212',
-                        'light-bg': '#FAFAFA',
-                        'card-dark': '#1E1E1E',
-                        'card-light': '#FFFFFF',
-                        'text-muted-dark': '#A1A1AA',
-                        'text-muted-light': '#52525B'
-                    },
-                    fontFamily: {
-                        'serif': ['"Cormorant Garamond"', 'serif'],
-                        'sans': ['"Lato"', 'sans-serif'],
-                    },
-                    typography: (theme) => ({
-                        DEFAULT: {
-                            css: {
-                                color: theme('colors.gray.700'),
-                                h1: { fontFamily: theme('fontFamily.serif') },
-                                h2: { fontFamily: theme('fontFamily.serif') },
-                                h3: { fontFamily: theme('fontFamily.serif') },
-                                strong: { color: theme('colors.gray.900') },
-                            },
-                        },
-                        dark: {
-                            css: {
-                                color: theme('colors.gray.300'),
-                                h1: { color: theme('colors.white') },
-                                h2: { color: theme('colors.white') },
-                                h3: { color: theme('colors.white') },
-                                strong: { color: theme('colors.white') },
-                            }
-                        }
-                    })
-                }
-            }
-        }
-    </script>
+  <meta property="og:title" content="Sam Moran — Creativity, Multiplied">
+  <meta property="og:description" content="Research · Entertainment · Creative AI">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta property="og:image:alt" content="Creativity, Multiplied — Sam Moran">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sam Moran — Creativity, Multiplied">
+  <meta name="twitter:description" content="Research · Entertainment · Creative AI">
+  <meta name="twitter:image" content="/og.png">
 
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--scrollbar-track, #121212); 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #555; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D4AF37; 
-        }
-
-        /* Theme Variables */
-        .dark {
-            --scrollbar-track: #121212;
-        }
-        :not(.dark) {
-            --scrollbar-track: #FAFAFA;
-        }
-
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #121212;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
-        }
-
-        .loader-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: #D4AF37;
-            letter-spacing: 2px;
-            opacity: 0;
-            animation: fadeText 2s ease-in-out infinite;
-        }
-
-        .loader-line {
-            width: 0;
-            height: 2px;
-            background: #fff;
-            margin-top: 10px;
-            animation: expandLine 1.5s ease-in-out forwards;
-        }
-
-        @keyframes fadeText {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
-        @keyframes expandLine {
-            0% { width: 0; }
-            100% { width: 150px; }
-        }
-
-        /* Intersection Observer Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Abstract Backgrounds for Portfolio (Dark Mode) */
-        .dark .bg-abstract-1 { background: linear-gradient(45deg, #232526, #414345); }
-        .dark .bg-abstract-2 { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); }
-        .dark .bg-abstract-3 { background: linear-gradient(to right, #434343, #000000); }
-        .dark .bg-abstract-4 { background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%); }
-
-        /* Abstract Backgrounds for Portfolio (Light Mode) */
-        .bg-abstract-1 { background: linear-gradient(45deg, #e0e0e0, #f5f5f5); }
-        .bg-abstract-2 { background: linear-gradient(135deg, #e6f3f5, #dbe9ec); }
-        .bg-abstract-3 { background: linear-gradient(to right, #e0e0e0, #cccccc); }
-        .bg-abstract-4 { background: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%); }
-        
-        /* Smooth navigation link underline */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: #D4AF37;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Lightbox Transitions */
-        #lightbox {
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-        }
-        #lightbox.hidden-modal {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        #lightbox.visible-modal {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        /* Carousel Styles */
-        .carousel-slide {
-            display: none;
-            animation: fadeEffect 0.5s;
-        }
-        .carousel-slide.active-slide {
-            display: block;
-        }
-        @keyframes fadeEffect {
-            from {opacity: 0.4} 
-            to {opacity: 1}
-        }
-
-        /* View Switching */
-        .view-container {
-            display: none;
-            animation: fadeView 0.5s ease-in-out;
-        }
-        .view-container.active-view {
-            display: block;
-        }
-
-        @keyframes fadeView {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="bg-light-bg dark:bg-dark-bg text-gray-900 dark:text-white font-sans antialiased overflow-x-hidden transition-colors duration-300">
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
 
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-text">Creating Discourse</div>
-        <div class="loader-line"></div>
-    </div>
-
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="hidden-modal fixed inset-0 z-[60] bg-white/95 dark:bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="relative w-full max-w-5xl bg-card-light dark:bg-card-dark shadow-2xl border border-gray-200 dark:border-white/10 flex flex-col md:flex-row overflow-hidden h-[80vh] rounded-lg">
-            
-            <!-- Close Button -->
-            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-100 dark:bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <!-- Left: Carousel -->
-            <div class="w-full md:w-2/3 bg-gray-100 dark:bg-black relative flex items-center justify-center">
-                <!-- Slides (Placeholders) -->
-                <div class="carousel-slide active-slide w-full h-full bg-abstract-1 flex items-center justify-center">
-                     <i class="fas fa-image text-6xl text-gray-400 dark:text-white/20"></i>
-                </div>
-                <div class="carousel-slide w-full h-full bg-abstract-2 flex items-center justify-center">
-                    <i class="fas fa-layer-group text-6xl text-gray-400 dark:text-white/20"></i>
-                </div>
-                <div class="carousel-slide w-full h-full bg-abstract-3 flex items-center justify-center">
-                    <i class="fas fa-video text-6xl text-gray-400 dark:text-white/20"></i>
-                </div>
-
-                <!-- Controls -->
-                <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/10 hover:bg-white/30 rounded-full flex items-center justify-center text-white transition">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <!-- Dots -->
-                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                    <span class="h-2 w-2 rounded-full bg-white cursor-pointer" onclick="setSlide(0)"></span>
-                    <span class="h-2 w-2 rounded-full bg-white/50 cursor-pointer" onclick="setSlide(1)"></span>
-                    <span class="h-2 w-2 rounded-full bg-white/50 cursor-pointer" onclick="setSlide(2)"></span>
-                </div>
-            </div>
-
-            <!-- Right: Content -->
-            <div class="w-full md:w-1/3 p-8 md:p-10 overflow-y-auto bg-white dark:bg-card-dark">
-                <span id="lb-category" class="text-accent uppercase tracking-widest text-xs font-bold block mb-2">Category</span>
-                <h2 id="lb-title" class="font-serif text-3xl md:text-4xl mb-4 text-gray-900 dark:text-white">Project Title</h2>
-                <div class="w-12 h-1 bg-accent mb-6"></div>
-                
-                <p id="lb-desc" class="text-text-muted-light dark:text-text-muted-dark text-sm leading-relaxed mb-6">
-                    Detailed description will appear here.
-                </p>
-
-                <div class="space-y-4">
-                    <div>
-                        <h4 class="font-bold text-xs uppercase tracking-wider text-gray-900 dark:text-white mb-2">Role</h4>
-                        <p id="lb-role" class="text-sm text-gray-600 dark:text-gray-400">Lead Composer</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-xs uppercase tracking-wider text-gray-900 dark:text-white mb-2">Year</h4>
-                        <p id="lb-year" class="text-sm text-gray-600 dark:text-gray-400">2023</p>
-                    </div>
-                </div>
-
-                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-white/10">
-                    <a href="#" class="inline-flex items-center text-sm uppercase tracking-widest font-bold text-gray-900 dark:text-white hover:text-accent transition">
-                        View Full Project <i class="fas fa-external-link-alt ml-2 text-xs"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <a href="#" class="font-serif text-2xl font-bold tracking-wider text-gray-900 dark:text-white nav-scroll">
-                    A.V. <span class="text-accent text-lg">PhD Candidate</span>
-                </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8 text-sm uppercase tracking-widest text-gray-600 dark:text-gray-300">
-                    <a href="#about" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">About</a>
-                    <a href="#research" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">Research</a>
-                    <a href="#portfolio" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">Portfolio</a>
-                    <a href="#speaking" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">Speaking</a>
-                    <a href="#blog" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">Blog</a>
-                    <a href="#contact" class="nav-link hover:text-black dark:hover:text-white transition nav-scroll">Contact</a>
-                    
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="ml-4 w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition focus:outline-none">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile Controls -->
-                <div class="md:hidden flex items-center gap-4">
-                    <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-white/10 flex items-center justify-center hover:bg-accent focus:outline-none text-gray-900 dark:text-white">
-                        <i class="fas fa-moon dark:hidden"></i>
-                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
-                    </button>
-                    <button id="mobile-menu-btn" class="text-gray-900 dark:text-white focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-card-dark border-b border-gray-200 dark:border-white/10">
-            <div class="flex flex-col px-6 py-4 space-y-4 text-center text-sm uppercase tracking-widest text-gray-900 dark:text-white">
-                <a href="#about" class="hover:text-accent transition mobile-link nav-scroll">About</a>
-                <a href="#research" class="hover:text-accent transition mobile-link nav-scroll">Research</a>
-                <a href="#portfolio" class="hover:text-accent transition mobile-link nav-scroll">Portfolio</a>
-                <a href="#speaking" class="hover:text-accent transition mobile-link nav-scroll">Speaking</a>
-                <a href="#blog" class="hover:text-accent transition mobile-link nav-scroll">Blog</a>
-                <a href="#contact" class="hover:text-accent transition mobile-link nav-scroll">Contact</a>
-            </div>
-        </div>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Sam Moran, home">SM<span>®</span></a>
+    <p class="header-role">Academic researcher / creative practitioner</p>
+    <nav aria-label="Primary navigation">
+      <a href="#profile">Profile</a>
+      <a href="#research">Research</a>
+      <a href="#engage">Engage</a>
     </nav>
+    <a class="header-contact" href="#contact">
+      Start a conversation <span aria-hidden="true">↗</span>
+    </a>
+  </header>
 
-    <!-- ================= HOME VIEW CONTAINER ================= -->
-    <main id="home-view" class="view-container active-view">
-        
-        <!-- Hero Section -->
-        <header class="relative h-screen flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-dark-bg transition-colors duration-300">
-            <div class="absolute inset-0 z-0 opacity-10 dark:opacity-20">
-                <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-400 via-gray-100 to-white dark:from-gray-700 dark:via-gray-900 dark:to-black"></div>
-            </div>
-            
-            <div class="relative z-10 text-center px-6 max-w-4xl mx-auto reveal active">
-                <p class="text-accent-dark dark:text-accent uppercase tracking-[0.3em] text-sm mb-4 font-bold">Bridging Theory & Practice</p>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-6 text-gray-900 dark:text-white">
-                    The Intersection of <br>
-                    <span class="italic text-gray-500 dark:text-gray-400">Sound</span> & <span class="italic text-gray-500 dark:text-gray-400">Society</span>
-                </h1>
-                <p class="text-gray-600 dark:text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Alex Varon is a Creative Industries researcher, University Lecturer, and Award-winning Composer exploring the future of digital media.
-                </p>
-                <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="#research" class="px-8 py-3 border border-gray-400 dark:border-white/30 hover:bg-gray-900 dark:hover:bg-white text-gray-900 dark:text-white hover:text-white dark:hover:text-black transition duration-300 uppercase tracking-widest text-xs nav-scroll">
-                        Academic Profile
-                    </a>
-                    <a href="#portfolio" class="px-8 py-3 bg-accent text-white dark:text-black hover:bg-yellow-600 dark:hover:bg-yellow-500 transition duration-300 uppercase tracking-widest text-xs font-bold nav-scroll">
-                        View Works
-                    </a>
-                </div>
-            </div>
+  <main id="content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="issue-rail" aria-hidden="true">
+        <span>Vol. 01</span>
+        <span>Creative futures</span>
+        <span>2026</span>
+      </div>
 
-            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400 dark:text-white/30">
-                <i class="fas fa-chevron-down text-xl"></i>
-            </div>
-        </header>
-
-        <!-- About & Bio Section -->
-        <section id="about" class="py-24 bg-white dark:bg-dark-bg relative transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <div class="aspect-[3/4] bg-gray-200 dark:bg-card-bg relative overflow-hidden border border-gray-200 dark:border-white/10 group">
-                        <div class="absolute inset-0 bg-abstract-4 opacity-60"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-user text-6xl text-gray-400 dark:text-white/10 group-hover:scale-110 transition duration-700"></i>
-                        </div>
-                        <div class="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-black/80 backdrop-blur-sm p-4 border-l-2 border-accent">
-                            <p class="text-gray-900 dark:text-white font-serif text-lg">Alex Varon, MA, PhD(c)</p>
-                            <p class="text-accent-dark dark:text-accent text-xs uppercase tracking-widest">Lecturer in Digital Media</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="reveal delay-100">
-                    <h2 class="font-serif text-4xl md:text-5xl mb-6 text-gray-900 dark:text-white">Scholar. Creator. Educator.</h2>
-                    <div class="w-20 h-1 bg-accent mb-8"></div>
-                    <p class="text-text-muted-light dark:text-text-muted-dark text-lg leading-relaxed mb-6">
-                        My work operates at the convergence of cultural studies and creative production. Currently a PhD candidate investigating the sociology of algorithmic music curation, I also teach undergraduate courses in Media Production and Sound Design.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="text-gray-900 dark:text-white font-bold uppercase tracking-wider mb-2 text-sm">Focus Areas</h3>
-                            <ul class="text-text-muted-light dark:text-text-muted-dark space-y-1 font-light text-sm">
-                                <li><i class="fas fa-check text-accent mr-2"></i>Sonic Branding</li>
-                                <li><i class="fas fa-check text-accent mr-2"></i>Algorithmic Culture</li>
-                                <li><i class="fas fa-check text-accent mr-2"></i>Media Sociology</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-gray-900 dark:text-white font-bold uppercase tracking-wider mb-2 text-sm">Affiliations</h3>
-                            <ul class="text-text-muted-light dark:text-text-muted-dark space-y-1 font-light text-sm">
-                                <li><i class="fas fa-university text-accent mr-2"></i>University of Arts</li>
-                                <li><i class="fas fa-users text-accent mr-2"></i>Creative Industries Fed</li>
-                                <li><i class="fas fa-music text-accent mr-2"></i>Screen Composers Guild</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research & Publications -->
-        <section id="research" class="py-24 bg-gray-50 dark:bg-card-bg transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                    <div>
-                        <span class="text-accent uppercase tracking-widest text-xs font-bold block mb-2">Academia</span>
-                        <h2 class="font-serif text-4xl md:text-5xl text-gray-900 dark:text-white">Selected Research</h2>
-                    </div>
-                    <a href="#" class="text-gray-900 dark:text-white hover:text-accent transition border-b border-gray-300 dark:border-white/30 pb-1 mt-4 md:mt-0">View CV / Full List</a>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group bg-white dark:bg-dark-bg p-8 border border-gray-200 dark:border-white/5 hover:border-accent/50 shadow-sm hover:shadow-lg transition duration-300 reveal">
-                        <div class="text-accent mb-4 text-4xl opacity-40 dark:opacity-20 group-hover:opacity-100 transition duration-500">01</div>
-                        <h3 class="font-serif text-2xl mb-3 text-gray-900 dark:text-white group-hover:text-accent transition">The Algorithmic Ear</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 italic">Published in Journal of New Media, 2023</p>
-                        <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-6">
-                            An investigation into how Spotify's recommendation algorithms influence the compositional structure of modern pop music.
-                        </p>
-                    </div>
-                    <div class="group bg-white dark:bg-dark-bg p-8 border border-gray-200 dark:border-white/5 hover:border-accent/50 shadow-sm hover:shadow-lg transition duration-300 reveal delay-100">
-                        <div class="text-accent mb-4 text-4xl opacity-40 dark:opacity-20 group-hover:opacity-100 transition duration-500">02</div>
-                        <h3 class="font-serif text-2xl mb-3 text-gray-900 dark:text-white group-hover:text-accent transition">Silence in the Stream</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 italic">Presented at MediaFutures Conference, 2022</p>
-                        <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-6">
-                            Exploring the economic devaluation of silence and dynamic range in the era of loudness normalization standards.
-                        </p>
-                    </div>
-                    <div class="group bg-white dark:bg-dark-bg p-8 border border-gray-200 dark:border-white/5 hover:border-accent/50 shadow-sm hover:shadow-lg transition duration-300 reveal delay-200 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-accent text-white dark:text-black text-xs font-bold px-3 py-1">Current PhD</div>
-                        <div class="text-accent mb-4 text-4xl opacity-40 dark:opacity-20 group-hover:opacity-100 transition duration-500">03</div>
-                        <h3 class="font-serif text-2xl mb-3 text-gray-900 dark:text-white group-hover:text-accent transition">Automating Creativity</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 italic">Thesis in Progress (Expected 2025)</p>
-                        <p class="text-text-muted-light dark:text-text-muted-dark leading-relaxed mb-6">
-                            A sociological analysis of AI tools in the creative workflow of professional sound designers.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Creative Portfolio -->
-        <section id="portfolio" class="py-24 bg-white dark:bg-dark-bg transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-accent uppercase tracking-widest text-xs font-bold block mb-2">Creative Practice</span>
-                    <h2 class="font-serif text-4xl md:text-5xl mb-8 text-gray-900 dark:text-white">Selected Works</h2>
-                    
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <button onclick="filterPortfolio('all')" class="filter-btn active px-6 py-2 border border-gray-300 dark:border-white/20 rounded-full text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition bg-gray-900 text-white dark:bg-white dark:text-black" data-filter="all">All</button>
-                        <button onclick="filterPortfolio('music')" class="filter-btn px-6 py-2 border border-gray-300 dark:border-white/20 rounded-full text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition text-gray-600 dark:text-white" data-filter="music">Music</button>
-                        <button onclick="filterPortfolio('tv')" class="filter-btn px-6 py-2 border border-gray-300 dark:border-white/20 rounded-full text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition text-gray-600 dark:text-white" data-filter="tv">Television</button>
-                        <button onclick="filterPortfolio('awards')" class="filter-btn px-6 py-2 border border-gray-300 dark:border-white/20 rounded-full text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition text-gray-600 dark:text-white" data-filter="awards">Awards</button>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Portfolio Items (Same as before) -->
-                    <div class="portfolio-item music group relative h-80 overflow-hidden cursor-pointer reveal rounded-lg"
-                         onclick="openLightbox('Echoes of Nature', 'Score Composition', 'Orchestral arrangement for documentary series.', 'Lead Composer', '2023', 'music')">
-                        <div class="absolute inset-0 bg-abstract-1 transform transition duration-700 group-hover:scale-105"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-music text-6xl text-gray-400 dark:text-white/20 group-hover:text-accent/60 transition duration-500"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-white/90 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-8">
-                            <p class="text-accent-dark dark:text-accent text-xs uppercase tracking-widest mb-1">Score Composition</p>
-                            <h3 class="font-serif text-2xl text-gray-900 dark:text-white">Echoes of Nature</h3>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item tv group relative h-80 overflow-hidden cursor-pointer reveal rounded-lg"
-                         onclick="openLightbox('The Night Shift', 'Sound Design', 'Complete foley and mixing for BBC Drama pilot.', 'Supervising Sound Editor', '2024', 'tv')">
-                        <div class="absolute inset-0 bg-abstract-2 transform transition duration-700 group-hover:scale-105"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-tv text-6xl text-gray-400 dark:text-white/20 group-hover:text-accent/60 transition duration-500"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-white/90 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-8">
-                            <p class="text-accent-dark dark:text-accent text-xs uppercase tracking-widest mb-1">Sound Design</p>
-                            <h3 class="font-serif text-2xl text-gray-900 dark:text-white">The Night Shift</h3>
-                        </div>
-                    </div>
-
-                    <div class="portfolio-item awards group relative h-80 overflow-hidden cursor-pointer reveal rounded-lg"
-                         onclick="openLightbox('Golden Sound Award', 'Recognition', 'Awarded Best Original Composition.', 'Recipient', '2023', 'award')">
-                        <div class="absolute inset-0 bg-gray-200 dark:bg-[#1a1a1a] border border-accent/30 transform transition duration-700"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-trophy text-6xl text-accent/40 dark:text-accent/20 group-hover:text-accent/60 transition duration-500"></i>
-                        </div>
-                        <div class="absolute inset-0 bg-white/90 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-8">
-                            <p class="text-accent-dark dark:text-accent text-xs uppercase tracking-widest mb-1">Recognition</p>
-                            <h3 class="font-serif text-2xl text-gray-900 dark:text-white">Golden Sound Award</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Speaking & Media -->
-        <section id="speaking" class="py-24 bg-gray-50 dark:bg-card-bg transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div class="reveal">
-                        <span class="text-accent uppercase tracking-widest text-xs font-bold block mb-2">Speaking</span>
-                        <h2 class="font-serif text-4xl mb-8 text-gray-900 dark:text-white">Talks & Lectures</h2>
-                        <div class="space-y-8">
-                            <div class="border-l-2 border-gray-300 dark:border-white/10 pl-6 hover:border-accent transition duration-300">
-                                <p class="text-gray-500 dark:text-gray-400 text-xs uppercase mb-1">Oct 2024</p>
-                                <h4 class="text-xl font-serif text-gray-900 dark:text-white mb-1">The Future of Sound</h4>
-                                <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Keynote Speaker, Audio Engineering Society, Berlin</p>
-                            </div>
-                            <div class="border-l-2 border-gray-300 dark:border-white/10 pl-6 hover:border-accent transition duration-300">
-                                <p class="text-gray-500 dark:text-gray-400 text-xs uppercase mb-1">June 2024</p>
-                                <h4 class="text-xl font-serif text-gray-900 dark:text-white mb-1">Creative Economies in the Digital Age</h4>
-                                <p class="text-text-muted-light dark:text-text-muted-dark text-sm">Panelist, SXSW Sydney</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="py-24 bg-white dark:bg-dark-bg border-t border-gray-200 dark:border-white/5 transition-colors duration-300">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="text-center mb-12 reveal">
-                    <span class="text-accent uppercase tracking-widest text-xs font-bold block mb-2">Journal</span>
-                    <h2 class="font-serif text-4xl mb-6 text-gray-900 dark:text-white">Recent Writings</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Post 1 -->
-                    <a href="#blog/ai-jingle" class="group reveal cursor-pointer">
-                        <div class="h-48 bg-gray-200 dark:bg-card-bg mb-4 relative overflow-hidden rounded-sm">
-                             <div class="absolute inset-0 bg-gradient-to-b from-gray-400 to-gray-800 dark:from-gray-800 dark:to-black group-hover:scale-105 transition duration-500"></div>
-                             <div class="absolute bottom-4 left-4">
-                                 <span class="text-white dark:text-accent text-xs uppercase font-bold bg-accent dark:bg-transparent px-2 py-1 dark:px-0">Industry Analysis</span>
-                             </div>
-                        </div>
-                        <p class="text-gray-500 text-xs mb-2">Nov 15, 2024</p>
-                        <h3 class="font-serif text-2xl mb-2 text-gray-900 dark:text-white group-hover:text-accent transition">Is Generative AI Killing the Jingle?</h3>
-                        <p class="text-text-muted-light dark:text-text-muted-dark text-sm line-clamp-3">An exploration of how cheap generation tools are disrupting the bottom rung of the commercial music industry.</p>
-                        <span class="text-gray-900 dark:text-white text-xs font-bold border-b border-accent mt-4 inline-block pb-1">Read More</span>
-                    </a>
-
-                    <!-- Post 2 -->
-                    <a href="#blog/teaching-sound" class="group reveal delay-100 cursor-pointer">
-                        <div class="h-48 bg-gray-200 dark:bg-card-bg mb-4 relative overflow-hidden rounded-sm">
-                            <div class="absolute inset-0 bg-gradient-to-b from-gray-400 to-gray-700 dark:from-gray-700 dark:to-black group-hover:scale-105 transition duration-500"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span class="text-white dark:text-accent text-xs uppercase font-bold bg-accent dark:bg-transparent px-2 py-1 dark:px-0">Pedagogy</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 text-xs mb-2">Oct 02, 2024</p>
-                        <h3 class="font-serif text-2xl mb-2 text-gray-900 dark:text-white group-hover:text-accent transition">Teaching Sound in a Visual World</h3>
-                        <p class="text-text-muted-light dark:text-text-muted-dark text-sm line-clamp-3">Strategies for encouraging students to listen critically in an increasingly ocular-centric media landscape.</p>
-                        <span class="text-gray-900 dark:text-white text-xs font-bold border-b border-accent mt-4 inline-block pb-1">Read More</span>
-                    </a>
-
-                    <!-- Post 3 -->
-                    <a href="#blog/phd-marathon" class="group reveal delay-200 cursor-pointer">
-                        <div class="h-48 bg-gray-200 dark:bg-card-bg mb-4 relative overflow-hidden rounded-sm">
-                            <div class="absolute inset-0 bg-gradient-to-b from-gray-500 to-gray-900 dark:from-gray-900 dark:to-black group-hover:scale-105 transition duration-500"></div>
-                            <div class="absolute bottom-4 left-4">
-                                <span class="text-white dark:text-accent text-xs uppercase font-bold bg-accent dark:bg-transparent px-2 py-1 dark:px-0">Reflection</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-500 text-xs mb-2">Sept 10, 2024</p>
-                        <h3 class="font-serif text-2xl mb-2 text-gray-900 dark:text-white group-hover:text-accent transition">The PhD Marathon</h3>
-                        <p class="text-text-muted-light dark:text-text-muted-dark text-sm line-clamp-3">Personal reflections on balancing creative outputs with the rigorous demands of doctoral research.</p>
-                        <span class="text-gray-900 dark:text-white text-xs font-bold border-b border-accent mt-4 inline-block pb-1">Read More</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter -->
-        <section id="newsletter" class="py-24 relative overflow-hidden bg-white dark:bg-dark-bg transition-colors duration-300">
-            <div class="absolute inset-0 bg-accent/10 dark:bg-accent/5"></div>
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10 reveal">
-                <i class="far fa-paper-plane text-4xl text-accent mb-6"></i>
-                <h2 class="font-serif text-4xl md:text-5xl mb-4 text-gray-900 dark:text-white">Join the Discussion</h2>
-                <p class="text-text-muted-light dark:text-text-muted-dark text-lg mb-8">Receive monthly updates on my research, new compositions, and thoughts on the creative industries. No spam, just substance.</p>
-                
-                <form id="newsletter-form" class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-                    <input type="email" placeholder="Your Email Address" required class="flex-1 bg-white dark:bg-black/30 border border-gray-300 dark:border-white/20 px-6 py-4 text-gray-900 dark:text-white focus:outline-none focus:border-accent transition placeholder-gray-500">
-                    <button type="submit" class="bg-accent text-white dark:text-black font-bold uppercase tracking-widest px-8 py-4 hover:bg-yellow-600 dark:hover:bg-white transition duration-300">Subscribe</button>
-                </form>
-                <p id="form-message" class="text-accent mt-4 hidden text-sm">Thank you for subscribing.</p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ================= BLOG POST VIEW CONTAINER ================= -->
-    <main id="blog-view" class="view-container hidden pt-32 pb-24 min-h-screen">
-        <div class="max-w-4xl mx-auto px-6">
-            <!-- Header Image -->
-            <div class="w-full h-64 md:h-96 bg-abstract-4 relative overflow-hidden rounded-lg mb-10">
-                <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                    <span id="post-category" class="text-accent bg-black/80 px-4 py-1 text-xs font-bold uppercase tracking-widest">Category</span>
-                </div>
-            </div>
-
-            <!-- Title & Meta -->
-            <div class="text-center mb-12 border-b border-gray-200 dark:border-white/10 pb-12">
-                <p id="post-date" class="text-gray-500 uppercase text-xs tracking-widest mb-4">Date</p>
-                <h1 id="post-title" class="font-serif text-4xl md:text-6xl text-gray-900 dark:text-white mb-6 leading-tight">Blog Post Title</h1>
-                <div class="flex justify-center gap-4">
-                    <a href="#" class="text-gray-400 hover:text-accent"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-accent"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-accent"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
-            <!-- Content -->
-            <div id="post-content" class="prose prose-lg dark:prose-invert mx-auto mb-16 font-light">
-                <!-- Dynamic Content Injected Here -->
-            </div>
-
-            <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mb-16 justify-center">
-                <span class="px-3 py-1 border border-gray-300 dark:border-white/20 rounded-full text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest">Creative Industries</span>
-                <span class="px-3 py-1 border border-gray-300 dark:border-white/20 rounded-full text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest">Research</span>
-                <span class="px-3 py-1 border border-gray-300 dark:border-white/20 rounded-full text-xs text-gray-600 dark:text-gray-400 uppercase tracking-widest">Sound Design</span>
-            </div>
-
-            <!-- Related Posts -->
-            <div class="border-t border-gray-200 dark:border-white/10 pt-12">
-                <h3 class="font-serif text-2xl text-gray-900 dark:text-white mb-8 text-center">Related Posts</h3>
-                <div id="related-posts-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Injected via JS -->
-                </div>
-            </div>
-
-            <!-- Back to Home -->
-            <div class="text-center mt-16">
-                <!-- Fixed: Use explicit href to root hash to prevent browser refresh race condition -->
-                <a href="#" class="text-sm font-bold uppercase tracking-widest border-b border-accent pb-1 text-gray-900 dark:text-white hover:text-accent transition">
-                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
-                </a>
-            </div>
+      <div class="hero-content">
+        <div class="hero-meta">
+          <p>Research / Entertainment / Creative AI</p>
+          <p>University of Tasmania, Australia</p>
         </div>
-    </main>
 
-    <!-- Contact & Footer (Shared) -->
-    <footer id="contact" class="bg-gray-900 dark:bg-black pt-24 pb-12 border-t border-gray-800 dark:border-white/10 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            <div>
-                <h3 class="font-serif text-3xl mb-6 text-white">Get in Touch</h3>
-                <p class="text-gray-400 mb-8 leading-relaxed max-w-md">
-                    I am available for speaking engagements, collaborative research projects, and sound design commissions.
-                </p>
-                <div class="space-y-4">
-                    <a href="mailto:hello@alexvaron.com" class="flex items-center text-white hover:text-accent transition">
-                        <i class="fas fa-envelope w-8"></i> hello@alexvaron.com
-                    </a>
-                    <div class="flex items-center text-white">
-                        <i class="fas fa-map-marker-alt w-8"></i> Creative Arts Building, University Campus
-                    </div>
-                </div>
-                
-                <div class="flex space-x-6 mt-8">
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fab fa-researchgate"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fab fa-spotify"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white text-xl transition"><i class="fab fa-imdb"></i></a>
-                </div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-kicker">A more optimistic proposition</p>
+            <h1 id="hero-title" aria-label="Creativity is not under threat. It is about to multiply.">
+              <span>Creativity is not</span>
+              <span>under threat.</span>
+              <span>It is about to <em>multiply.</em></span>
+            </h1>
+            <div class="hero-intro">
+              <p>
+                Sam Moran studies how artificial intelligence is reshaping entertainment — and how
+                artists, studios and audiences can use it to unlock a new era of human creativity.
+              </p>
+              <div class="hero-actions">
+                <a href="#research">Explore the research <span aria-hidden="true">↓</span></a>
+                <a href="#engage">Invite Sam to speak <span aria-hidden="true">↗</span></a>
+              </div>
             </div>
-            
-            <div>
-                <form class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Name" class="bg-gray-800 dark:bg-card-bg border border-gray-700 dark:border-white/10 px-4 py-3 text-white focus:border-accent focus:outline-none transition">
-                        <input type="email" placeholder="Email" class="bg-gray-800 dark:bg-card-bg border border-gray-700 dark:border-white/10 px-4 py-3 text-white focus:border-accent focus:outline-none transition">
-                    </div>
-                    <input type="text" placeholder="Subject" class="w-full bg-gray-800 dark:bg-card-bg border border-gray-700 dark:border-white/10 px-4 py-3 text-white focus:border-accent focus:outline-none transition">
-                    <textarea placeholder="Message" rows="4" class="w-full bg-gray-800 dark:bg-card-bg border border-gray-700 dark:border-white/10 px-4 py-3 text-white focus:border-accent focus:outline-none transition"></textarea>
-                    <button class="text-white border-b border-accent pb-1 hover:text-accent transition text-sm uppercase tracking-widest">Send Message</button>
-                </form>
-            </div>
+          </div>
+
+          <div class="portrait-deck" aria-label="Portraits of Sam Moran. Focus or select a panel to expand it.">
+            <figure class="portrait-panel panel-academic" tabindex="0" role="button" aria-expanded="true">
+              <img src="/images/sam-academic.jpg" alt="Sam Moran in a dark blazer in an academic setting">
+              <figcaption><span>01</span> Researcher</figcaption>
+            </figure>
+            <figure class="portrait-panel panel-yellow" tabindex="0" role="button" aria-expanded="false">
+              <img src="/images/sam-yellow.jpg" alt="Sam Moran laughing against a yellow background">
+              <figcaption><span>02</span> Optimist</figcaption>
+            </figure>
+            <figure class="portrait-panel panel-red" tabindex="0" role="button" aria-expanded="false">
+              <img src="/images/sam-red.jpg" alt="Sam Moran in a playful portrait against red">
+              <figcaption><span>03</span> Entertainer</figcaption>
+            </figure>
+          </div>
         </div>
-        
-        <div class="max-w-7xl mx-auto px-6 border-t border-gray-800 dark:border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 dark:text-gray-600 uppercase tracking-widest">
-            <p>&copy; 2024 Dr. Alex Varon (Candidate). All Rights Reserved.</p>
-            <div class="mt-4 md:mt-0 space-x-4">
-                <a href="#" class="hover:text-white transition">Privacy</a>
-                <a href="#" class="hover:text-white transition">Impressum</a>
-            </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Areas of practice">
+      <div>
+        <span>Research</span><i aria-hidden="true">✦</i>
+        <span>Speaking</span><i aria-hidden="true">✦</i>
+        <span>Creative industries</span><i aria-hidden="true">✦</i>
+        <span>Human–AI collaboration</span><i aria-hidden="true">✦</i>
+        <span aria-hidden="true">Research</span><i aria-hidden="true">✦</i>
+        <span aria-hidden="true">Speaking</span><i aria-hidden="true">✦</i>
+        <span aria-hidden="true">Creative industries</span><i aria-hidden="true">✦</i>
+        <span aria-hidden="true">Human–AI collaboration</span><i aria-hidden="true">✦</i>
+      </div>
+    </div>
+
+    <section class="profile-section reveal-section" id="profile" aria-labelledby="profile-title">
+      <div class="chapter-label">
+        <span>01 / Profile</span>
+        <span>Two careers. One enquiry.</span>
+      </div>
+
+      <div class="profile-grid">
+        <div class="profile-heading">
+          <p class="eyebrow">The person behind the questions</p>
+          <h2 id="profile-title">Practice came first. Research gave it a new language.</h2>
         </div>
-    </footer>
 
-    <!-- Scripts -->
-    <script>
-        // --- Blog Data ---
-        const blogPosts = {
-            'ai-jingle': {
-                title: "Is Generative AI Killing the Jingle?",
-                date: "Nov 15, 2024",
-                category: "Industry Analysis",
-                content: `
-                    <p>The commercial music industry has long relied on the "jingle"—short, catchy melodic phrases designed to stick in the listener's mind. From the "I'm Lovin' It" whistle to the Intel bong, these sonic logos are billion-dollar assets. However, the rise of generative AI models capable of producing high-fidelity audio from text prompts is creating an existential crisis for entry-level composers.</p>
-                    <p><strong>The Commodification of Melody</strong></p>
-                    <p>In my recent research, I analyzed over 500 commercial tracks generated by leading AI audio models. The results were startling: while complex emotional nuance remains elusive for AI, the structural simplicity required for a 5-second commercial bumper is perfectly within the machine's capabilities. This leads us to a critical question of value: if a machine can generate 100 variations of a cheerful whistle melody in seconds, what is the economic value of the human composer in this specific niche?</p>
-                    <h3>The Human Element</h3>
-                    <p>Despite the efficiency, there is a sociological pushback. Brands are beginning to realize that "generated" content lacks the narrative weight of "composed" content. Just as handmade goods command a premium in a world of mass manufacturing, human-composed audio is beginning to be marketed as a luxury tier of sonic branding. The imperfection, the slight timing variations, and the intentionality of human performance are becoming the new markers of prestige.</p>
-                `
-            },
-            'teaching-sound': {
-                title: "Teaching Sound in a Visual World",
-                date: "Oct 02, 2024",
-                category: "Pedagogy",
-                content: `
-                    <p>We live in an ocular-centric society. Instagram, TikTok, and YouTube are primarily visual mediums where sound is often treated as a secondary layer—a background track to keep retention high. As a lecturer in Sound Design, my primary challenge is not teaching students the technical tools of the trade, but teaching them how to <em>listen</em>.</p>
-                    <p><strong>Active vs. Passive Listening</strong></p>
-                    <p>In my "Sonic Architectures" module, I implement a "blindfold" policy for the first three weeks. Students must critique media without seeing the screen. This forces a recalibration of the senses. Without visual cues to explain a sound (e.g., seeing a car door close), the brain must analyze the spectral content of the thud itself. Is it heavy? Metallic? Hollow?</p>
-                    <h3>The Multi-Sensory Future</h3>
-                    <p>Interestingly, as VR and AR technologies mature, spatial audio is becoming the primary anchor for reality. In a virtual space, you can look away from an object, but you cannot "hear away" from it. Sound is omnidirectional. This shift is creating a massive demand for graduates who understand 3D audio, ambisonics, and the psychoacoustics of immersion.</p>
-                `
-            },
-            'phd-marathon': {
-                title: "The PhD Marathon: Creativity vs. Rigor",
-                date: "Sept 10, 2024",
-                category: "Reflection",
-                content: `
-                    <p>There is a fundamental tension between the creative mind and the academic mind. The creative mind thrives on chaos, intuition, and the happy accident. The academic mind demands structure, citation, and reproducible methodology. Straddling these two worlds as a PhD candidate in the Creative Industries is a unique form of psychological gymnastics.</p>
-                    <p><strong>Practice-Based Research</strong></p>
-                    <p>My thesis utilizes a "Practice-Based" methodology, meaning the creative artifacts I produce (music albums, sound installations) are not just illustrations of the research—they <em>are</em> the research. This validates the creative act as a form of knowledge generation. However, translating a musical feeling into a sociologically rigorous argument remains a daily struggle.</p>
-                    <p>For anyone considering this path: protect your creative time. Do not let the analysis of the work consume the joy of making the work. Treat your studio time as sacred, and your writing time as necessary.</p>
-                `
-            }
-        };
+        <figure class="profile-portrait">
+          <img src="/images/sam-portrait.jpg" alt="Portrait of Sam Moran in a dark blazer" loading="lazy">
+          <figcaption>Sam Moran / Academic researcher</figcaption>
+        </figure>
 
-        // --- Router & View Logic ---
-        const homeView = document.getElementById('home-view');
-        const blogView = document.getElementById('blog-view');
-        let currentView = 'home'; // Track state to prevent redundant switching
-        
-        function handleRoute() {
-            const hash = window.location.hash;
-            
-            if (hash.startsWith('#blog/')) {
-                const slug = hash.replace('#blog/', '');
-                if (blogPosts[slug]) {
-                    renderBlogPost(slug);
-                    switchView('blog');
-                    // Ensure we scroll to top of the blog post
-                    window.scrollTo(0, 0);
-                } else {
-                    // Fallback if slug doesn't exist
-                    window.location.hash = '';
-                }
-            } else {
-                switchView('home');
-                // Handle scroll to section if hash exists and isn't just '#'
-                if (hash && hash !== '#') {
-                     setTimeout(() => {
-                         const el = document.querySelector(hash);
-                         if(el) {
-                             el.scrollIntoView({behavior: 'smooth'});
-                         }
-                     }, 100); 
-                } else {
-                    // Scroll to top if going purely home
-                    window.scrollTo(0, 0);
-                }
-            }
-        }
+        <div class="profile-copy">
+          <p class="dropcap">
+            Before examining the future of creative work, Sam lived it — in rehearsal rooms,
+            recording studios, on stages and in front of cameras.
+          </p>
+          <p>
+            That experience shapes a research practice grounded in the realities of making:
+            collaboration, risk, audiences, identity and the invisible labour behind culture.
+            It also makes his perspective on AI unusually practical. The question is not simply
+            what the technology can do, but what it can help people become.
+          </p>
 
-        function switchView(viewName) {
-            // Prevent flickering if we are already on the view
-            if (currentView === viewName) return;
-            currentView = viewName;
+          <dl>
+            <div><dt>Field</dt><dd>Creative industries</dd></div>
+            <div><dt>Focus</dt><dd>Human–AI collaboration</dd></div>
+            <div><dt>Lens</dt><dd>Entertainment practice</dd></div>
+          </dl>
+        </div>
 
-            if (viewName === 'blog') {
-                homeView.classList.remove('active-view');
-                // Use Animation Frame for smoother transition
-                setTimeout(() => {
-                    homeView.style.display = 'none';
-                    blogView.style.display = 'block';
-                    requestAnimationFrame(() => {
-                        blogView.classList.add('active-view');
-                    });
-                }, 300);
-            } else {
-                blogView.classList.remove('active-view');
-                setTimeout(() => {
-                    blogView.style.display = 'none';
-                    homeView.style.display = 'block';
-                    requestAnimationFrame(() => {
-                        homeView.classList.add('active-view');
-                        // Re-trigger reveal to ensure elements aren't hidden
-                        revealOnScroll();
-                    });
-                }, 300);
-            }
-        }
+        <figure class="archive-card">
+          <img src="/images/sam-wiggles.jpg" alt="Sam Moran in yellow with members of The Wiggles" loading="lazy">
+          <figcaption>
+            <span>From the archive</span>
+            A career in entertainment makes the future of creative labour personal.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
 
-        function renderBlogPost(currentSlug) {
-            const post = blogPosts[currentSlug];
-            document.getElementById('post-title').innerText = post.title;
-            document.getElementById('post-date').innerText = post.date;
-            document.getElementById('post-category').innerText = post.category;
-            document.getElementById('post-content').innerHTML = post.content;
+    <section class="research-section reveal-section" id="research" aria-labelledby="research-title">
+      <div class="chapter-label chapter-inverse">
+        <span>02 / Current research</span>
+        <span>Questions for a creative age</span>
+      </div>
 
-            // Generate Related Posts (Simple Logic: Show other posts)
-            const relatedContainer = document.getElementById('related-posts-container');
-            relatedContainer.innerHTML = '';
-            
-            Object.keys(blogPosts).forEach(slug => {
-                if (slug !== currentSlug) {
-                    const p = blogPosts[slug];
-                    const html = `
-                        <a href="#blog/${slug}" class="group block bg-gray-100 dark:bg-card-dark p-6 rounded border border-gray-200 dark:border-white/5 hover:border-accent transition">
-                            <span class="text-accent text-xs font-bold uppercase tracking-widest mb-2 block">${p.category}</span>
-                            <h4 class="font-serif text-xl text-gray-900 dark:text-white group-hover:text-accent transition">${p.title}</h4>
-                            <p class="text-xs text-gray-500 mt-2">Read Article <i class="fas fa-arrow-right ml-1"></i></p>
-                        </a>
-                    `;
-                    relatedContainer.innerHTML += html;
-                }
-            });
-        }
+      <div class="research-heading">
+        <p class="eyebrow">Lines of enquiry</p>
+        <h2 id="research-title">The future is not something creativity enters. It is something creativity makes.</h2>
+        <p>
+          Research at the intersection of technology, entertainment and human imagination,
+          grounded in the people and practices that make culture.
+        </p>
+      </div>
 
-        // Initialize Router
-        window.addEventListener('hashchange', handleRoute);
-        window.addEventListener('load', handleRoute); // Handle initial load
+      <div class="research-list">
+        <article class="research-row">
+          <span class="research-number">01</span>
+          <p class="research-label">Human agency</p>
+          <h3>Creative agency after automation</h3>
+          <p class="research-body">What remains distinctly human when creative systems can generate at scale — and how do we design for more agency, not less?</p>
+          <span class="research-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="research-row">
+          <span class="research-number">02</span>
+          <p class="research-label">Creative labour</p>
+          <h3>The future of entertainment work</h3>
+          <p class="research-body">How new tools are changing roles, production cultures and the value of creative labour across music, screen and live entertainment.</p>
+          <span class="research-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="research-row">
+          <span class="research-number">03</span>
+          <p class="research-label">Responsible practice</p>
+          <h3>Adoption without fear</h3>
+          <p class="research-body">Moving beyond panic and hype toward practical models that protect creators while expanding what they can make.</p>
+          <span class="research-arrow" aria-hidden="true">↗</span>
+        </article>
+      </div>
+    </section>
 
-        // --- Existing Logic Below ---
+    <section class="proposition reveal-section" id="ideas" aria-labelledby="proposition-title">
+      <div class="proposition-media">
+        <img src="/images/sam-red.jpg" alt="Sam Moran in a vivid red studio portrait" loading="lazy">
+        <span class="image-stamp">Human made / AI enabled</span>
+      </div>
+      <div class="proposition-copy">
+        <div class="chapter-label">
+          <span>03 / Working proposition</span>
+          <span>2026 →</span>
+        </div>
+        <p class="eyebrow">A position, not a prediction</p>
+        <h2 id="proposition-title">AI should make us <em>more human,</em> not less.</h2>
+        <p>
+          Artificial intelligence does not arrive with a fixed meaning. We decide what it
+          amplifies, who benefits and which forms of creativity become possible next.
+        </p>
+        <a href="#engage">Explore this idea together <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
 
-        // Theme Toggle Logic
-        const html = document.documentElement;
-        const themeBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
-        
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
+    <section class="engage-section reveal-section" id="engage" aria-labelledby="engage-title">
+      <div class="chapter-label">
+        <span>04 / Beyond the page</span>
+        <span>Research made useful</span>
+      </div>
 
-        themeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.theme = 'dark';
-                } else {
-                    localStorage.theme = 'light';
-                }
-            });
+      <div class="engage-heading">
+        <div>
+          <p class="eyebrow">Speaking / Advisory / Media</p>
+          <h2 id="engage-title">Bring a difficult question. Leave with possibility.</h2>
+        </div>
+        <figure>
+          <img src="/images/sam-yellow.jpg" alt="Sam Moran laughing against a yellow background" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="engagement-list">
+        <article class="engagement-row">
+          <span>01</span>
+          <p class="engagement-type">Speaking</p>
+          <h3>Ideas that move a room.</h3>
+          <p>Keynotes, panels and workshops that make the creative impact of AI vivid, practical and hopeful.</p>
+          <small>Keynotes / Panels / Workshops</small>
+          <span class="engagement-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="engagement-row">
+          <span>02</span>
+          <p class="engagement-type">Advisory</p>
+          <h3>A clearer path through change.</h3>
+          <p>Research-led advice for entertainment organisations navigating adoption, creative culture and public trust.</p>
+          <small>Strategy / Facilitation / Advisory</small>
+          <span class="engagement-arrow" aria-hidden="true">↗</span>
+        </article>
+        <article class="engagement-row">
+          <span>03</span>
+          <p class="engagement-type">Media</p>
+          <h3>Useful context, without the hype.</h3>
+          <p>Accessible, informed commentary on AI, entertainment and the changing meaning of human creativity.</p>
+          <small>Interviews / Commentary / Broadcast</small>
+          <span class="engagement-arrow" aria-hidden="true">↗</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-photo" aria-hidden="true">
+        <img src="/images/sam-bw.jpg" alt="" loading="lazy">
+      </div>
+      <div class="contact-copy">
+        <p class="eyebrow">Start a conversation</p>
+        <h2 id="contact-title">Ideas move further when we move them <em>together.</em></h2>
+        <div class="contact-bottom">
+          <p>
+            Speaking invitations, research collaborations, advisory work and informed media
+            commentary are welcome.
+          </p>
+          <a href="mailto:?subject=Speaking%2C%20research%20or%20media%20enquiry%20for%20Sam%20Moran">
+            Draft an enquiry <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="footer-mark" href="#top">SAM MORAN<span>®</span></a>
+    <p>Researching a more human creative future.</p>
+    <div>
+      <a href="#profile">Profile</a>
+      <a href="#research">Research</a>
+      <a href="#engage">Engage</a>
+    </div>
+    <a class="back-top" href="#top" aria-label="Back to top">↑</a>
+  </footer>
+
+  <script>
+    (() => {
+      const panels = Array.from(document.querySelectorAll(".portrait-panel"));
+
+      const expandPanel = (selected) => {
+        panels.forEach((panel) => {
+          const isSelected = panel === selected;
+          panel.classList.toggle("is-active", isSelected);
+          panel.setAttribute("aria-expanded", String(isSelected));
         });
+      };
 
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                document.querySelector('header .reveal').classList.add('active');
-            }, 1500);
+      panels.forEach((panel) => {
+        panel.addEventListener("click", () => expandPanel(panel));
+        panel.addEventListener("focus", () => expandPanel(panel));
+        panel.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            expandPanel(panel);
+          }
         });
-
-        // Navigation Click Handling (Updated for Router)
-        document.querySelectorAll('.nav-scroll').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                // Close mobile menu
-                document.getElementById('mobile-menu').classList.add('hidden');
-                // Let default anchor behavior happen to trigger hashchange
-            });
-        });
-
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealOnScroll = () => {
-            // Only run scroll reveal if we are on home view
-            if (currentView !== 'home') return;
-
-            const windowHeight = window.innerHeight;
-            const elementVisible = 100;
-            revealElements.forEach((reveal) => {
-                const elementTop = reveal.getBoundingClientRect().top;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveal.classList.add('active');
-                }
-            });
-        };
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-
-        // Navbar Background Change on Scroll
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                if (html.classList.contains('dark')) {
-                     navbar.classList.replace('bg-dark-bg/90', 'bg-dark-bg/95');
-                } else {
-                     navbar.classList.replace('bg-white/90', 'bg-white/95');
-                }
-            } else {
-                navbar.classList.remove('shadow-lg');
-                if (html.classList.contains('dark')) {
-                     navbar.classList.replace('bg-dark-bg/95', 'bg-dark-bg/90');
-                } else {
-                     navbar.classList.replace('bg-white/95', 'bg-white/90');
-                }
-            }
-        });
-
-        // Mobile Menu Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Portfolio Filter Logic
-        const filterPortfolio = (category) => {
-            const items = document.querySelectorAll('.portfolio-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                if (btn.dataset.filter === category) {
-                    btn.classList.remove('bg-transparent', 'text-gray-600', 'dark:text-white');
-                    if(html.classList.contains('dark')) {
-                        btn.classList.add('bg-white', 'text-black');
-                    } else {
-                        btn.classList.add('bg-gray-900', 'text-white');
-                    }
-                } else {
-                    btn.classList.remove('bg-white', 'text-black', 'bg-gray-900', 'text-white');
-                    btn.classList.add('bg-transparent', 'text-gray-600', 'dark:text-white');
-                }
-            });
-            items.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 50);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        };
-
-        // Lightbox Logic
-        let currentSlideIndex = 0;
-        const openLightbox = (title, category, desc, role, year, type) => {
-            const lightbox = document.getElementById('lightbox');
-            document.getElementById('lb-title').innerText = title;
-            document.getElementById('lb-category').innerText = category;
-            document.getElementById('lb-desc').innerText = desc;
-            document.getElementById('lb-role').innerText = role;
-            document.getElementById('lb-year').innerText = year;
-            const slides = document.querySelectorAll('.carousel-slide');
-            slides.forEach((slide, index) => {
-                 const icon = slide.querySelector('i');
-                 if (type === 'music') icon.className = index === 0 ? 'fas fa-music text-6xl text-gray-400 dark:text-white/20' : 'fas fa-headphones text-6xl text-gray-400 dark:text-white/20';
-                 if (type === 'tv') icon.className = index === 0 ? 'fas fa-tv text-6xl text-gray-400 dark:text-white/20' : 'fas fa-video text-6xl text-gray-400 dark:text-white/20';
-                 if (type === 'award') icon.className = index === 0 ? 'fas fa-trophy text-6xl text-gray-400 dark:text-white/20' : 'fas fa-certificate text-6xl text-gray-400 dark:text-white/20';
-            });
-            lightbox.classList.remove('hidden-modal');
-            lightbox.classList.add('visible-modal');
-            document.body.style.overflow = 'hidden';
-        };
-
-        const closeLightbox = () => {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('visible-modal');
-            lightbox.classList.add('hidden-modal');
-            document.body.style.overflow = 'auto';
-        };
-
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('lightbox')) {
-                closeLightbox();
-            }
-        });
-
-        const setSlide = (n) => { showSlides(currentSlideIndex = n); }
-        const changeSlide = (n) => { showSlides(currentSlideIndex += n); }
-        const showSlides = (n) => {
-            let i;
-            let slides = document.getElementsByClassName("carousel-slide");
-            let dots = document.querySelectorAll(".rounded-full.cursor-pointer");
-            if (n >= slides.length) {currentSlideIndex = 0}
-            if (n < 0) {currentSlideIndex = slides.length - 1}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                slides[i].classList.remove('active-slide');
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" bg-white", " bg-white/50");
-            }
-            slides[currentSlideIndex].style.display = "flex";
-            slides[currentSlideIndex].classList.add('active-slide');
-            dots[currentSlideIndex].className = dots[currentSlideIndex].className.replace(" bg-white/50", " bg-white");
-        }
-
-        // Newsletter
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const msg = document.getElementById('form-message');
-            const btn = form.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerText = '...';
-            setTimeout(() => {
-                form.reset();
-                btn.innerText = originalText;
-                msg.classList.remove('hidden');
-                setTimeout(() => {
-                    msg.classList.add('hidden');
-                }, 3000);
-            }, 1000);
-        });
-    </script>
+      });
+    })();
+  </script>
 </body>
 </html>
