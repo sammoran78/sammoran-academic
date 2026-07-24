@@ -44,6 +44,8 @@ Never invent academic titles, qualifications, publications, institutional appoin
 
 The site's recurring word is **bloom**. It intentionally foreshadows Sam's developing theoretical framework, **Compression Bloom**. Treat that name as a developing framework rather than a completed or published finding unless Sam provides publication details.
 
+Sam's canonical attributed statement on the site is: **“A.I. is not the death of Art; it is the most complex palette human expression has yet devised.”** Preserve its wording, punctuation, capitalisation and attribution unless Sam explicitly revises it.
+
 ## Content standards for search and retrieval
 
 Every public page or future blog post must:

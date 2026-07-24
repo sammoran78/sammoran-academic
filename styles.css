@@ -506,11 +506,25 @@ h1 em {
   padding: clamp(70px, 8vw, 125px) 0 clamp(70px, 7vw, 110px);
 }
 .research-heading .eyebrow::before { background: var(--yellow); }
+.research-quote { margin: 0; }
 .research-heading h2 {
-  font-size: clamp(3.5rem, 6.2vw, 7.5rem);
-  line-height: 0.84;
-  letter-spacing: -0.078em;
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 5.4vw, 6.7rem);
+  font-style: italic;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  font-weight: 400;
+  text-transform: none;
+}
+.research-quote cite {
+  display: block;
+  margin-top: 26px;
+  color: var(--yellow);
+  font-family: var(--sans);
+  font-size: .61rem;
+  font-style: normal;
   font-weight: 900;
+  letter-spacing: .12em;
   text-transform: uppercase;
 }
 .research-heading > p:last-child {
