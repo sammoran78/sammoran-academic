@@ -14,6 +14,8 @@ Agents editing this repository must preserve factual accuracy, the editorial vis
 - `og.png` is the social sharing card.
 - `robots.txt` and `sitemap.xml` control discovery of canonical public URLs.
 - `llms.txt` gives retrieval systems a concise, factual map of the site and Sam's expertise.
+- `cookie-consent.js` owns privacy preference storage, the consent banner and the settings dialog.
+- `privacy-policy/index.html` is the public privacy and cookie notice.
 - `.github/workflows/azure-static-web-apps.yml` deploys `main` to Azure Static Web Apps.
 
 Stable section anchors:
@@ -79,6 +81,17 @@ Blog content and uploads will use the Azure Static Web Apps API and Azure Blob S
 - Test the desktop, 1180px, 820px and 520px layout rules when changing the header or grids.
 - Keep the header role on one line at desktop widths.
 - Do not replace permanent editorial photography with remote runtime dependencies.
+
+## Privacy and consent guardrails
+
+- The current site has no analytics provider, advertising pixel or marketing cookie.
+- Do not load a non-essential technology before its matching preference is true.
+- Read preferences through `window.samCookieConsent.permits(category)` or the `sam:consentchange` event.
+- Keep “Reject optional” as easy to reach as “Accept all”; do not use preselected optional categories or consent-obstructing design.
+- Update the category description, privacy policy and storage table before adding a provider.
+- Increment `CONSENT_VERSION` in `cookie-consent.js` when purposes, providers or categories materially change so visitors are asked again.
+- Preserve the permanent “Cookie settings” control in the footer so consent can be withdrawn.
+- Never describe the site as legally compliant merely because a banner exists. The published policy must match actual data handling, processors, transfers and retention.
 
 ## Deployment
 
