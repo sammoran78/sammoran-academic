@@ -396,6 +396,10 @@ h1 em {
 .engage-section {
   padding: clamp(80px, 9vw, 150px) clamp(30px, 6vw, 112px);
 }
+.engage-section {
+  overflow: hidden;
+  overflow: clip;
+}
 .profile-grid {
   display: grid;
   grid-template-columns: minmax(0, .9fr) minmax(340px, .65fr) minmax(300px, .62fr);
@@ -623,15 +627,39 @@ h1 em {
 }
 
 .engage-heading {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
   gap: clamp(40px, 7vw, 130px);
   align-items: end;
   padding: clamp(70px, 8vw, 125px) 0 80px;
 }
-.engage-heading h2 { max-width: 1050px; }
+.engage-heading::before {
+  content: "";
+  width: min(58vw, 840px);
+  aspect-ratio: 1;
+  position: absolute;
+  z-index: 0;
+  left: 58%;
+  top: 51%;
+  background: url("/images/coloured-dust-explosion.png") center / contain no-repeat;
+  opacity: .75;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.engage-heading > * {
+  position: relative;
+  z-index: 1;
+}
+.engage-heading h2 {
+  max-width: 1050px;
+  text-shadow: 0 0 22px rgba(242, 239, 231, .58);
+}
 .engage-heading figure {
   position: relative;
+  z-index: 2;
+  isolation: isolate;
   transform: rotate(3deg);
 }
 .engage-heading figure::before {
@@ -1217,6 +1245,11 @@ footer > div a {
   .proposition-copy { min-height: 730px; border-left: 0; border-top: 1px solid var(--ink); padding: 32px 22px 55px; }
   .proposition-copy h2 { font-size: clamp(4.2rem, 17vw, 7.4rem); }
   .engage-heading { grid-template-columns: 1fr; padding: 68px 0 60px; }
+  .engage-heading::before {
+    width: min(92vw, 720px);
+    left: 52%;
+    top: 44%;
+  }
   .engage-heading figure { width: min(300px, 72%); justify-self: end; }
   .engagement-row { grid-template-columns: 38px 1fr 24px; }
   .engagement-type, .engagement-row h3, .engagement-row > p:not(.engagement-type), .engagement-row small { grid-column: 2; }
@@ -1247,6 +1280,11 @@ footer > div a {
   .portrait-panel { min-width: 36px; }
   .profile-heading h2,
   .engage-heading h2 { font-size: clamp(2.9rem, 14vw, 4.7rem); }
+  .engage-heading::before {
+    width: 118vw;
+    left: 50%;
+    top: 42%;
+  }
   .research-heading h2 { font-size: clamp(3.2rem, 14vw, 5.1rem); }
   .proposition-copy h2,
   .contact-copy h2 { font-size: clamp(3.8rem, 18vw, 5.7rem); }
