@@ -40,6 +40,8 @@ Use these canonical identity details unless the user explicitly changes them:
 
 Never invent academic titles, qualifications, publications, institutional appointments, awards, clients, testimonials, audience figures or research findings. Clearly distinguish Sam's stated propositions from established findings.
 
+The site's recurring word is **bloom**. It intentionally foreshadows Sam's developing theoretical framework, **Compression Bloom**. Treat that name as a developing framework rather than a completed or published finding unless Sam provides publication details.
+
 ## Content standards for search and retrieval
 
 Every public page or future blog post must:
